@@ -19,12 +19,14 @@ public class ExpressionEvaluator {
         // Define the infix and postfix expressions
         final String INFIX_EXPRESSION = "(a+b)*(c+d)";
         final String POSTFIX_EXPRESSION = "ac-b^d+";
-
+        // Initialize Scanner to read user input from the console.
         Scanner scanner = new Scanner(System.in);
         boolean computingNeeded = true;
-
+        // Enter a loop to allow repeated computations based on user input.
+        // This loop facilitates the dynamic evaluation of expressions with different identifier values.
         while (computingNeeded) {
-            // Read values for identifiers
+            // Read values for identifiers from user input to evaluate expressions dynamically.
+            // This allows for the evaluation of the same expression with various sets of values.
             System.out.print("Enter value for 'a': ");
             double aValue = scanner.nextDouble();
             System.out.print("Enter value for 'b': ");
@@ -43,12 +45,13 @@ public class ExpressionEvaluator {
             double postfixResult = PostfixEvaluator.evaluatePostfix(POSTFIX_EXPRESSION, aValue, bValue, cValue, dValue);
             System.out.println("Value of postfix string " + POSTFIX_EXPRESSION + " with a = " + aValue + ", b = " + bValue +
                     ", c = " + cValue + ", d = " + dValue + " is " + postfixResult);
-
+            // Prompt the user to decide if another computation is desired.
+            // This allows for continuous interaction until the user decides to exit.
             System.out.print("Do you want to compute again? (yes/no): ");
             String answer = scanner.next();
             computingNeeded = answer.equalsIgnoreCase("yes");
         }
-
+        // Close the Scanner to prevent resource leaks, marking the end of user input.
         scanner.close();
     }
 }
