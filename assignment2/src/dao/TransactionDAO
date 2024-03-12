@@ -1,0 +1,3 @@
+public interface TransactionDAO extends DAOInterface<TransactionDTO> {
+    // This interface could be extended with transaction-specific methods in the future.
+}

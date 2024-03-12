@@ -1,0 +1,46 @@
+import java.util.LinkedList;
+
+public class CustomPriorityQueue<T extends Comparable<T>> implements QueueInterface<T> {
+    private LinkedList<T> elements;
+
+    public CustomPriorityQueue() {
+        this.elements = new LinkedList<>();
+    }
+
+    @Override
+    public void enqueue(T item) {
+        if (elements.isEmpty()) {
+            elements.add(item);
+        } else {
+            // Find the correct position to insert item based on priority
+            int i = 0;
+            for (T element : elements) {
+                if (item.compareTo(element) < 0) {
+                    break;
+                }
+                i++;
+            }
+            elements.add(i, item);
+        }
+    }
+
+    @Override
+    public T dequeue() {
+        return elements.poll();
+    }
+
+    @Override
+    public T peek() {
+        return elements.peek();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return elements.isEmpty();
+    }
+
+    @Override
+    public int size() {
+        return elements.size();
+    }
+}
